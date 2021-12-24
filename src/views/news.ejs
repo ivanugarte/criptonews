@@ -1,0 +1,84 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CriptoNews</title>
+  <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">Administrador de Noticias Cripto</a>
+  </nav>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr class="h6">
+              <td>Title</td>
+              <td>Description</td>
+              <td>Author</td>
+              <td>Fountain</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody class="h12">
+            <% if (data) { %>
+              <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                  <!-- <td>
+                    <%= (i + 1) %>
+                  </td> -->
+                  <td>
+                    <%= data[i].title %>
+                  </td>
+                  <td>
+                    <%= data[i].description %>
+                  </td>
+                  <td>
+                    <%= data[i].author %>
+                  </td>
+                  <td>
+                    <%= data[i].fountain %>
+                  </td>
+                  <td>
+                    <a href="/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
+                    <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                  </td>
+                </tr>
+                <% } %>
+                  <% } %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-4 ml-8">
+        <div class="card">
+          <div class="card-body">
+            <form action="/add" method="POST">
+              <div class="form-group">
+                <input type="text" name="Title" placeholder="Title" class="form-control" autofocus>
+              </div>
+              <div class="form-group">
+                <input type="text" name="Description" placeholder="Description" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="Author" placeholder="Author" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="fountain" placeholder="Fountain" class="form-control">
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">
+                save New
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
